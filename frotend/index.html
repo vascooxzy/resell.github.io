@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DHgate Scraper</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ── Header ─────────────────────────────────────────────────── -->
+  <header class="header">
+    <div class="header-inner">
+      <div class="logo">
+        <span class="logo-icon">🛒</span>
+        <span class="logo-text">DHgate<strong>Scraper</strong></span>
+      </div>
+      <p class="tagline">Pesquise produtos e exporte para Excel em segundos.</p>
+    </div>
+  </header>
+
+  <!-- ── Search bar ──────────────────────────────────────────────── -->
+  <main class="main">
+    <section class="search-section">
+      <div class="search-box">
+        <input
+          id="searchInput"
+          type="text"
+          placeholder="Ex: wireless earbuds, phone case, led strip…"
+          autocomplete="off"
+        />
+        <select id="pagesSelect" title="Número de páginas">
+          <option value="1">1 pág.</option>
+          <option value="2">2 págs.</option>
+          <option value="3">3 págs.</option>
+        </select>
+        <button id="searchBtn" class="btn btn-primary" onclick="runSearch()">
+          🔍 Pesquisar
+        </button>
+      </div>
+      <div id="statusBar" class="status-bar hidden"></div>
+    </section>
+
+    <!-- ── Results ──────────────────────────────────────────────── -->
+    <section id="resultsSection" class="results-section hidden">
+      <div class="results-header">
+        <span id="resultCount" class="result-count"></span>
+        <div class="actions">
+          <button class="btn btn-outline" onclick="exportExcel()">
+            📥 Exportar Excel
+          </button>
+          <button class="btn btn-outline" onclick="copyTable()">
+            📋 Copiar tabela
+          </button>
+        </div>
+      </div>
+
+      <div class="table-wrap">
+        <table id="resultsTable">
+          <thead>
+            <tr>
+              <th>Imagem</th>
+              <th>Nome</th>
+              <th>Preço</th>
+              <th>Avaliação</th>
+              <th>Vendedor</th>
+              <th>Encomendas</th>
+              <th>Link</th>
+            </tr>
+          </thead>
+          <tbody id="resultsBody"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ── Empty / error states ─────────────────────────────────── -->
+    <div id="emptyState" class="empty-state hidden">
+      <p>😕 Nenhum produto encontrado. Tenta outro termo.</p>
+    </div>
+    <div id="errorState" class="error-state hidden">
+      <p id="errorMsg">❌ Ocorreu um erro.</p>
+    </div>
+  </main>
+
+  <!-- ── Footer ─────────────────────────────────────────────────── -->
+  <footer class="footer">
+    <p>DHgate Scraper · Uso responsável · Respeita os T&amp;C do site</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
